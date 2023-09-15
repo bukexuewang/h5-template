@@ -30,6 +30,7 @@ import App from './App.vue'
 import router from './router'
 // 引入全局样式
 import '@/styles/index.scss'
+import 'uno.css'
 
 import { installPlugins } from './plugins'
 

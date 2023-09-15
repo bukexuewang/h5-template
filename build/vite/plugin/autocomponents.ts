@@ -4,24 +4,12 @@
  */
 import Components from 'unplugin-vue-components/vite'
 import { VueUseComponentsResolver, VantResolver } from 'unplugin-vue-components/resolvers'
-
-const NutUIResolver = () => {
-	return (name) => {
-		if (name.startsWith('Nut')) {
-			const partialName = name.slice(3)
-			return {
-				name: partialName,
-				from: '@nutui/nutui',
-				sideEffects: `@nutui/nutui/dist/packages/${partialName.toLowerCase()}/style`
-			}
-		}
-	}
-}
+import NutUIResolver from '@nutui/nutui/dist/resolver'
 
 export function configAutoComponentsPlugin() {
 	return Components({
 		// 指定组件位置，默认是src/components
-		dirs: ['src/components'],
+		dirs: ['src/components/global/**'],
 		// ui库解析器
 		resolvers: [VueUseComponentsResolver(), VantResolver(), NutUIResolver()],
 		extensions: ['vue', 'tsx'],

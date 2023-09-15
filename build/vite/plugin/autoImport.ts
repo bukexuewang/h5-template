@@ -12,13 +12,13 @@ export function configAutoImportPlugin() {
 			/\.vue\?vue/, // .vue
 			/\.md$/ // .md
 		],
-		imports: ['vue', 'vue-router', '@vueuse/core'],
+		imports: ['vue', 'vue-router'],
 		// 可以选择auto-import.d.ts生成的位置，使用ts建议设置为'src/auto-import.d.ts'
 		dts: 'declare/auto-import.d.ts',
 		// eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
 		// 生成全局声明文件，给eslint用
 		eslintrc: {
-			enabled: true, // Default `false`
+			enabled: false, // Default `false`
 			filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
 			globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
 		}

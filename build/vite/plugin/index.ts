@@ -1,3 +1,4 @@
+import { configUnocssPlugin } from './unocss'
 import type { Plugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -17,7 +18,12 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, mode: stri
 
 	const vitePlugins: (Plugin | Plugin[])[] = [
 		// vue支持
-		vue(),
+		vue({
+			script: {
+				defineModel: true,
+				propsDestructure: true,
+			  },
+		}),
 		// JSX支持
 		vueJsx({
 			include: /\.(jsx|tsx)/
@@ -47,6 +53,9 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, mode: stri
 			]
 		})
 	]
+	// css原子化
+	vitePlugins.push(configUnocssPlugin())
+
 	// 自动按需引入样式
 	vitePlugins.push(configStyleImportPlugin())
 
